@@ -78,9 +78,43 @@
 </pre></div>    
         </div>
 
-        <button class="accordion">Question 2</button>
+        <button class="accordion"><b>Equilibrium Point</b><br>
+            <a href="https://practice.geeksforgeeks.org/problems/equilibrium-point/0">GFG Link</a><br>
+            <br>
+            Given an array, your method should return any equilibrium position in the array. Equilibrium position in an array is a position such that the sum of elements before it is equal to the sum of elements after it.
+        </button>
         <div class="panel">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p><b>Logic:-</b><br>
+              First find the sum of all the array elements. Now for each iteration of the loop, you can keep finding the left sum by simply adding the new element to the existing left sum. For finding the right sum, you can substract the current left sum from the total sum and add the current element to the difference (since the current element is common between the left sum and right sum). This way you can avoid using 2 nested for loops.<br>
+              <b>Space complexity:-</b> O(1)<br>
+              <b>Time complexity:-</b> O(n)</p>
+              <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">public <span style="color: #007020">int</span> getEquilibriumPosition(<span style="color: #007020">int</span> a[])
+{
+  <span style="color: #007020">int</span> leftPointer <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+  <span style="color: #007020">int</span> rightPointer <span style="color: #333333">=</span> a<span style="color: #333333">.</span>length<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>;
+  
+  <span style="color: #007020">int</span> totalSum <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+  <span style="color: #008800; font-weight: bold">while</span>(leftPointer<span style="color: #333333">&lt;=</span>rightPointer)
+  {
+    totalSum <span style="color: #333333">+=</span> a[leftPointer];
+    leftPointer<span style="color: #333333">++</span>;
+  }
+  
+  leftPointer <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+  <span style="color: #007020">int</span> leftSum <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+  <span style="color: #007020">int</span> rightSum <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+  
+  <span style="color: #008800; font-weight: bold">while</span>(leftPointer<span style="color: #333333">&lt;=</span>rightPointer)
+  {
+    leftSum <span style="color: #333333">+=</span> a[leftPointer];
+    rightSum <span style="color: #333333">=</span> totalSum <span style="color: #333333">-</span> leftSum <span style="color: #333333">+</span> a[leftPointer];
+    <span style="color: #008800; font-weight: bold">if</span>(leftSum <span style="color: #333333">==</span> rightSum)
+      <span style="color: #008800; font-weight: bold">return</span> leftPointer<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>;
+    leftPointer<span style="color: #333333">++</span>;
+  }
+  <span style="color: #008800; font-weight: bold">return</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>;
+}
+</pre></div>
         </div>
 
         <button class="accordion">Question 3</button>
