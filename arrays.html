@@ -117,9 +117,36 @@
 </pre></div>
         </div>
 
-        <button class="accordion">Question 3</button>
+        <button class="accordion"><b>All leaders in array</b><br>
+            <a href="https://practice.geeksforgeeks.org/problems/leaders-in-an-array/0">GFG Link</a><br>
+            <br>
+            Given an array, your method should print all the leaders in the array. An element of array is leader if it is greater than or equal to all the elements to its right side. Also, the rightmost element is always a leader.
+        </button>
         <div class="panel">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <br>    
+          <b>Logic:-</b><br>
+          In order to solve the problem with just one array traversal, start traversing the array from right keeping track of the maximum element encountering while traversing left so far. At any time during iteration, if an element is encountered, which is greater than or equal to the maximum element encountered so far, prefix it to the output string, update the maxSoFar and continue with the iteration. After all the array elements are traversed from right to left, you have a string with all the leaders.<br>
+          <br>
+          <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">public String getLeaders(<span style="color: #007020">int</span> a[])
+{
+  <span style="color: #007020">int</span> leftPointer <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+  <span style="color: #007020">int</span> rightPointer <span style="color: #333333">=</span> a<span style="color: #333333">.</span>length<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>;
+  <span style="color: #007020">int</span> maxSoFarFromRight <span style="color: #333333">=</span> a[rightPointer];
+  String output <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+  
+  <span style="color: #008800; font-weight: bold">while</span>(rightPointer <span style="color: #333333">&gt;=</span> leftPointer)
+  {
+    <span style="color: #008800; font-weight: bold">if</span>(a[rightPointer]<span style="color: #333333">&gt;=</span>maxSoFarFromRight)
+    {
+      maxSoFarFromRight <span style="color: #333333">=</span> a[rightPointer];
+      output <span style="color: #333333">=</span> a[rightPointer] <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">+</span> output;
+    }
+    rightPointer<span style="color: #333333">--</span>;
+  }
+  
+  <span style="color: #008800; font-weight: bold">return</span> output<span style="color: #333333">.</span>trim();
+}
+</pre></div>
         </div>
 
         <script>
